@@ -1,4 +1,4 @@
-// const items = [3, 9, 6, 5, 1, 2, 4, 0, 7, 8, 2, 6];
+const items = [3, 9, 6, 5, 1, 2, 4, 0, 7, 8, 2, 6];
 
 function swap(items, indexA, indexB) {
   const items_ = items.concat();
@@ -18,7 +18,6 @@ function swap(items, indexA, indexB) {
   ave: O(n log n)
 *****************************************/
 function partition(items, leftIndex, rightIndex) {
-  console.log(items);
   let items_ = items.concat();
 
   const pivotIndex = Math.floor((rightIndex + leftIndex) / 2);
@@ -35,7 +34,6 @@ function partition(items, leftIndex, rightIndex) {
       j -= 1;
     }
     if (i <= j) {
-      console.log(pivotIndex, i, j, items_);
       items_ = swap(items_, i, j);
       i += 1;
       j -= 1;
@@ -48,28 +46,20 @@ function partition(items, leftIndex, rightIndex) {
   };
 }
 
-function quickSort(items, left, right) {
-  let items_ = items.concat();
-  var index;
-  if (items_.length > 1) {
-    left = typeof left != "number" ? 0 : left;
-    right = typeof right != "number" ? items_.length - 1 : right;
+function quickSort(items, leftIndex, rightIndex) {
+  const result = partition(items, leftIndex, rightIndex);
 
-    result = partition(items_, left, right);
-    items_ = result.items;
-    index = result.index;
+  let items_ = result.items;
+  let pivotIndex = result.index;
 
-    if (left < index - 1) {
-      items_ = quickSort(items_, left, index - 1);
-    }
-    if (index < right) {
-      items_ = quickSort(items_, index, right);
-    }
+  if (leftIndex < pivotIndex - 1) {
+    items_ = quickSort(items_, leftIndex, pivotIndex - 1);
+  }
+  if (pivotIndex < rightIndex) {
+    items_ = quickSort(items_, pivotIndex, rightIndex);
   }
   return items_;
 }
 
 
-// console.log('quick sort:', quickSort(items, 0, items.length - 1));
-const newItems = [8, 4, 3, 7, 6, 5, 2, 1];
-console.log('quick sort:', quickSort(newItems, 0, newItems.length - 1));
+console.log('quick sort:', quickSort(items, 0, items.length - 1));
