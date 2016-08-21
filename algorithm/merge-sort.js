@@ -1,41 +1,45 @@
 const items = [3, 9, 6, 5, 1, 2, 4, 0, 7, 8, 2, 6];
 
-function swap(items, indexA, indexB) {
-  const items_ = items.concat();
-
-  const temp = items_[indexA];
-  items_[indexA] = items_[indexB];
-  items_[indexB] = temp;
-
-  return items_;
-}
-
 /*****************************************
   mergeSort
 
-  max: O(n log n)
-  min: O(n log n)
-  ave: O(n log n)
-*****************************************/
-
-function divid(items) {
-  let items_ = items.concat();
-
-  const numOfItem = Math.ceil(items_.length / 2);
-
-  const items1 = items_.slice(0, numOfItem);
-  const items2 = items_.slice(numOfItem, numOfItem * 2);
-
-  if (items1.length == 2) {
-    return [items1, items2];
-  }
-  return [divid(items1), divid(items2)];
-}
+max: O(n log n)
+min: O(n log n)
+ave: O(n log n)
+ *****************************************/
 
 function mergeSort(items) {
-  let items_ = items.concat();
+  if (items.length < 2) {
+    return items;
+  }
 
-  const dividedItems = divid(items_);
+  const middle = parseInt(items.length / 2);
+  const left = items.slice(0, middle);
+  const right = items.slice(middle, items.length);
+
+  return merge(mergeSort(left), mergeSort(right));
+}
+
+function merge(left, right) {
+  var result = [];
+
+  while (left.length && right.length) {
+    if (left[0] <= right[0]) {
+      result.push(left.shift());
+    } else {
+      result.push(right.shift());
+    }
+  }
+
+  while (left.length) {
+    result.push(left.shift());
+  }
+
+  while (right.length) {
+    result.push(right.shift());
+  }
+
+  return result;
 }
 
 console.log('merge sort:', JSON.stringify(mergeSort(items)));
