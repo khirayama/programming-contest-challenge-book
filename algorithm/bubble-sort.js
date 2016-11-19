@@ -1,15 +1,5 @@
 const items = [3, 9, 6, 5, 1, 2, 4, 0, 7, 8, 2, 6];
 
-function swap(items, indexA, indexB) {
-  const items_ = items.concat();
-
-  const temp = items_[indexA];
-  items_[indexA] = items_[indexB];
-  items_[indexB] = temp;
-
-  return items_;
-}
-
 /*****************************************
   bubbleSort
 
@@ -30,6 +20,17 @@ function swap(items, indexA, indexB) {
   1, 2, 2, 3, false, [0, 1, 2, 3]
 *****************************************/
 
+function swap(items, indexA, indexB) {
+  const items_ = items.concat();
+
+  const temp = items_[indexA];
+  items_[indexA] = items_[indexB];
+  items_[indexB] = temp;
+
+  return items_;
+}
+
+
 function bubbleSort(items) {
   let items_ = items.concat();
   for (var i = 0; i < items_.length; i++) {
@@ -42,5 +43,25 @@ function bubbleSort(items) {
   return items_;
 }
 
+function _swap(items, indexA, indexB){
+  var temp = items[indexA];
+  items[indexA] = items[indexB];
+  items[indexB] = temp;
+}
+
+function _bubbleSort(items){
+  const len = items.length;
+
+  for (let i = 0; i < len; i++) {
+    for (let j = 0, stop = len - i; j < stop; j++) {
+      if (items[j] > items[j + 1]) {
+        _swap(items, j, j + 1);
+      }
+    }
+  }
+  return items;
+}
+
 
 console.log('bubble sort:', bubbleSort(items));
+console.log('bubble sort:', _bubbleSort(items.concat()));
