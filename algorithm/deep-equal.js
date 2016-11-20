@@ -9,7 +9,7 @@ function _objEquiv(a, b) {
   kb.sort();
   for (let i = ka.length - 1; i >= 0; i--) {
     let key = ka[i];
-    if (!_deepEqual(a[key], b[key])) {
+    if (!deepEqual(a[key], b[key])) {
       return false;
     }
   }
