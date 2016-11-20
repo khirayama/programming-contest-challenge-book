@@ -1,3 +1,5 @@
+const deepEqual = require('./deep-equal');
+
 function _fibonacci(num) {
   const result = [];
 
@@ -14,17 +16,10 @@ function _fibonacci(num) {
   return result;
 }
 
-console.assert(_fibonacci(7).length === 7);
-console.assert(_fibonacci(7)[0] === 0);
-console.assert(_fibonacci(7)[1] === 1);
-console.assert(_fibonacci(7)[2] === 1);
-console.assert(_fibonacci(7)[3] === 2);
-console.assert(_fibonacci(7)[4] === 3);
-console.assert(_fibonacci(7)[5] === 5);
-console.assert(_fibonacci(7)[6] === 8);
+console.assert(deepEqual([0, 1, 1, 2, 3, 5, 8], _fibonacci(7)));
 
 function fibonacci(index) {
   return _fibonacci(index + 1)[index];
 }
 
-console.assert(fibonacci(3) === 2);
+console.assert(deepEqual(13, fibonacci(7)));
