@@ -42,4 +42,4 @@ function merge(left, right) {
   return result;
 }
 
-console.log('merge sort:', JSON.stringify(mergeSort(items)));
+console.log('merge sort:', mergeSort(items));
