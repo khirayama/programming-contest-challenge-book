@@ -39,8 +39,9 @@ function bubbleSort(items){
   return items;
 }
 
-
 console.log('bubble sort:', bubbleSort(items));
+
+module.exports = bubbleSort;
 
 // function swap(items, indexA, indexB) {
 //   const items_ = items.concat();

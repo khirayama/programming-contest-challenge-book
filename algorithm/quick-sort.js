@@ -49,8 +49,9 @@ function quickSort(items, leftIndex, rightIndex) {
   return items;
 }
 
-
 console.log('quick sort:', quickSort(items, 0, items.length - 1));
+
+module.exports = quickSort;
 
 // function swap(items, indexA, indexB) {
 //   const items_ = items.concat();

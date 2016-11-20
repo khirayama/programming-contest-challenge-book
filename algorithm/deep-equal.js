@@ -1,4 +1,4 @@
-export function _objEquiv(a, b) {
+function _objEquiv(a, b) {
   const ka = Object.keys(a);
   const kb = Object.keys(b);
 
@@ -16,7 +16,7 @@ export function _objEquiv(a, b) {
   return typeof a === typeof b;
 }
 
-export function _deepEqual(actual, expected) {
+function deepEqual(actual, expected) {
   if (actual instanceof Date && expected instanceof Date) {
     return actual.getTime() === expected.getTime();
   } else if (
@@ -28,3 +28,5 @@ export function _deepEqual(actual, expected) {
     return _objEquiv(actual, expected);
   }
 }
+
+module.exports = deepEqual;

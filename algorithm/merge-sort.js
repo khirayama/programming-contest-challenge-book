@@ -43,3 +43,5 @@ function merge(left, right) {
 }
 
 console.log('merge sort:', mergeSort(items));
+
+module.exports = mergeSort;
