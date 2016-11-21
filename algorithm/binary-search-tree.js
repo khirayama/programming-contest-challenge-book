@@ -2,7 +2,7 @@ class BinarySearchTree {
   constructor() {
     this._root = null;
   }
-  add() {
+  add(value) {
     const node = {
       value,
       left: null,
