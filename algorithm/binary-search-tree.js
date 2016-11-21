@@ -51,6 +51,28 @@ class BinarySearchTree {
 
     return found;
   }
+  remove() {}
+  size() {
+    const length = 0;
+
+    this._traverse((node) => {
+      length++;
+    });
+
+    return length;
+  }
+  toArray() {
+    const result = [];
+
+    this._traverse((node) => {
+      result.push(node.value);
+    });
+
+    return result;
+  }
+  toString() {
+    return this.toArray().toString();
+  }
   // private
   _traverse(process) {
     function inOrder(node) {
@@ -66,8 +88,4 @@ class BinarySearchTree {
     }
     inOrder(this._root);
   }
-  remove() {}
-  size() {}
-  toArray() {}
-  toString() {}
 }
