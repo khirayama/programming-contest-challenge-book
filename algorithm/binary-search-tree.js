@@ -51,7 +51,8 @@ class BinarySearchTree {
 
     return found;
   }
-  traverse(process) {
+  // private
+  _traverse(process) {
     function inOrder(node) {
       if (node) {
         if (node.left !== null) {
