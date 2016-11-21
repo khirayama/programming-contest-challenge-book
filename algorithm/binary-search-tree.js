@@ -51,6 +51,20 @@ class BinarySearchTree {
 
     return found;
   }
+  traverse(process) {
+    function inOrder(node) {
+      if (node) {
+        if (node.left !== null) {
+          inOrder(node.left);
+        }
+        process.call(this, node);
+        if (node.right !== null) {
+          inOrder(node.right);
+        }
+      }
+    }
+    inOrder(this._root);
+  }
   remove() {}
   size() {}
   toArray() {}
