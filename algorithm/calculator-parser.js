@@ -118,3 +118,30 @@ console.assert(deepEqual(
     right: {type: "number", value: "3"}
   })
 )
+
+// backend
+const variables = {
+  e: Math.E,
+  pi: Math.PI,
+};
+
+function evaluate(obj) {
+  switch (obj.type) {
+    case "number":
+      return parseInt(obj.value);
+    case "name":
+      return variables[obj.id] || 0;
+    case "+":
+      return evaluate(obj.left) + evaluate(obj.right);
+    case "-":
+      return evaluate(obj.left) - evaluate(obj.right);
+    case "*":
+      return evaluate(obj.left) * evaluate(obj.right);
+    case "/":
+      return evaluate(obj.left) / evaluate(obj.right);
+  }
+}
+
+console.assert(deepEqual(evaluate(parse("2 + 2")), 4));
+console.assert(deepEqual(evaluate(parse("3 * 4 * 5")), 60));
+console.assert(deepEqual(evaluate(parse(("5 * (2 + 2)"))), 20));
